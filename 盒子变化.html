@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒子变化</title>
+	<script src="../js/function.js"></script>
+	<script src="../js/animate.js"></script>
+</head>
+<style>
+	*{
+		padding:0;margin:0;
+		list-style: none;
+	}
+	.box{
+		width: 200px;height:150px;
+		background: red;
+		margin:100px auto;
+		text-align: center;
+		font-size: 25px;
+		line-height: 150px;
+		text-align: center;
+		letter-spacing: 5px;
+		background: url(1.png) no-repeat;
+		background-size: 100% 100%;	
+	}
+	.box:hover{
+		background: yellowgreen;
+		color:#fff;
+	}
+</style>
+<body>
+	<div class="box">我是小赞</div>
+</body>
+<script>
+	var box=$(".box")[0];
+	var w=box.offsetWidth,h=box.offsetHeight;
+	var step=-1;
+	var c=0;
+	
+	function size(){
+		if(w>=400&&h>=350){
+			step*=-1;//step=step*-1;
+			c*=-1;
+		}
+		if(w<=200&&h<=150){
+			step*=-1;
+			c*=-1;
+		}
+		w+=step;
+		h+=step;
+		c+=-1;
+		box.style.width=w+"px";
+		box.style.height=h+"px";
+		box.style.lineHeight=h+"px";
+		box.style.fontSize=h/5+"px";
+		box.style.borderRadius=c+"%";
+		if(w>=400&&h>=350){
+			box.innerHTML="王亚康";
+			box.style.backgroundImage="url(1.png)";
+		}else if(w<=200&&h<=150){
+			box.innerHTML="我喜欢你";
+			box.style.backgroundImage="url(2.png)";
+		}
+	}
+	var t=setInterval(size,10);
+</script>
+</html>
